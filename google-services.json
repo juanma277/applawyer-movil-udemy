@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "120255805446",
+    "firebase_url": "https://tutiquetera.firebaseio.com",
+    "project_id": "tutiquetera",
+    "storage_bucket": "tutiquetera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120255805446:android:14b45a4f4601bc76",
+        "android_client_info": {
+          "package_name": "com.juanvalderrama.tutiquetera001"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120255805446-kj6kd0edshoiu07n5b0tvhp5b9vqj2ij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.juanvalderrama.tutiquetera001",
+            "certificate_hash": "798b364fac11d1ff86afc43385421cf97a823e21"
+          }
+        },
+        {
+          "client_id": "120255805446-mg32vjgka2hperfu3677icfr9reulsbl.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "120255805446-mg32vjgka2hperfu3677icfr9reulsbl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChWkDkrV2qItW9A1BkALlzZwoiXr0tP5U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120255805446-mg32vjgka2hperfu3677icfr9reulsbl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "120255805446-sb2ntjd9887jc175b8m9v7l8usdes255.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.juanvalderrama.tutiquetera001"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

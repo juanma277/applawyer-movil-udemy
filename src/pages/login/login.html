@@ -1,0 +1,55 @@
+<ion-content padding text-center>
+    <ion-grid>
+        <ion-row>
+          <ion-col class="top-20">
+            <img src="./assets/imgs/logo-restaurante.png" >
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col class="top-20">
+              <h3>Tu Tiquetera App</h3>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row>
+              <ion-col class="top-5">
+                  <ion-list inset>
+                      <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-input type="text" class="transparent"></ion-input>
+                      </ion-item>
+
+                      <br>
+                    
+                      <ion-item>
+                        <ion-label>Contraseña</ion-label>
+                        <ion-input type="password" class="transparent"></ion-input>
+                      </ion-item>
+
+                        <button ion-button color="default" block>
+                              LOGIN
+                        </button>
+
+                  </ion-list>
+              </ion-col>
+          </ion-row>
+
+        <ion-row>
+          <ion-col class="top-5">
+
+            <button ion-button color="google" class="btnRedondo" icon-only (click)="signInWithGoogle()">
+              <ion-icon name="logo-google"></ion-icon>
+            </button>
+
+            <button ion-button color="facebook" class="btnRedondo" icon-only (click)="signInWithFacebook()">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+</ion-content>
