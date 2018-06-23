@@ -1,38 +1,20 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="footer">
+      <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
     <ion-title>
-      Bienvenido
+      Inicio
     </ion-title>
+    <ion-buttons start> 
+        <button ion-button> 
+              <img src="./assets/imgs/logo-applawyer1.png">
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-list>
-    <ion-item text-center>
-      <img [src]="user.imagen">
-    </ion-item> 
-    
-    <ion-item>
-      {{user.nombre}}
-    </ion-item> 
-
-    <ion-item>
-      {{user.email}}
-    </ion-item> 
-
-    <ion-item>
-      {{user.uid}}
-    </ion-item> 
-
-    <ion-item>
-      {{user.provider}}
-    </ion-item>
-    
-    <ion-item>
-      <button ion-button (click)="salir()" color="danger" block>SALIR</button>
-    </ion-item>
-
-  </ion-list>
  
 </ion-content>

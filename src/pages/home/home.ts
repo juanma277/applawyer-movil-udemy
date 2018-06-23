@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { UsuarioProvider, Credenciales } from '../../providers/usuario/usuario';
+import { UsuarioProvider, Usuario } from '../../providers/usuario/usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../login/login';
-import { AlertController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -11,20 +10,16 @@ import { AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
-  user:Credenciales = {};
+  user:Usuario = {};
 
   constructor(  public navCtrl: NavController,
                 public usuarioProvider: UsuarioProvider,
                 private afAuth:AngularFireAuth,
-                public alertCtrl: AlertController) {
+                public alertCtrl: AlertController,
+             )
+                {
 
-                  console.log(this.usuarioProvider.usuario);
                   this.user = this.usuarioProvider.usuario;
-
-                  this.afAuth.authState.subscribe(user =>{
-                    console.log(JSON.stringify(user));
-                  });
-
   }
 
   salir(){
@@ -50,14 +45,6 @@ export class HomePage {
       ]
     });
     confirm.present();
-
-
-
-
-
-
-
-    
   }
 
 }

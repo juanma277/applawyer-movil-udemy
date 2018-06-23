@@ -10,10 +10,7 @@ export class AjustesProvider {
   }
 
   constructor(  private storage: Storage, 
-                public platform:Platform) {
-
-    console.log('Hello AjustesProvider Provider');
-  }
+                public platform:Platform) { }
 
 
   cargarStorage(){

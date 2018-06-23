@@ -1,11 +1,12 @@
 page-login {
-
-    ion-content {
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1b577b+0,1b577b+56,341a4a+100 */
-        background: #1b577b; /* Old browsers */
-        background: -moz-linear-gradient(-45deg, #1b577b 0%, #1b577b 56%, #341a4a 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(-45deg, #1b577b 0%,#1b577b 56%,#341a4a 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(135deg, #1b577b 0%,#1b577b 56%,#341a4a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  
+    #rounded {
+        width: 100%;
+        height: 50%;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 10px;
+        margin-bottom: 10px;  
     }
 
     img {
@@ -18,17 +19,18 @@ page-login {
         font-size: 46px;        
     }
 
+    p{
+        font-size: 13px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+    }
+
     .top-20{
-        margin-top: 10%        
+        margin-top: 20%        
     }
 
     .top-5{
         margin-top: 5%        
-    }
-
-    .transparent{
-        background-color: transparent;
-        border-radius: 1px;
     }
 
     .btnRedondo{
@@ -37,4 +39,41 @@ page-login {
         border-radius: 50%;
     }
 
+    .login{
+        width: 90%;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        padding: 0 4px 0 4px;
+        background-color: #1b577b;
+    }
+
+    .iconInput{
+        color: white;
+        padding: 0 4px 0 4px;
+    }
+
+    .fondoInput{
+        background-color: #408BB8;
+        color: white;
+        width: 100%;
+        height: 50%;
+        border-color: white;
+        margin-bottom: 10px;
+    } 
+}
+
+.toast{
+    div{
+        text-align:center;
+        width: 100%;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background-color: #1b577b;
+        font-weight: bold;
+        font-size: 13px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
 }

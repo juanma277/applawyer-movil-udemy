@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.fondo{
+     background: rgb(255,255,255); 
+ }
+
+.fondo2{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHinZjE1vLzPkF1I-42iE23bH_vJtCr_fFyihjNW90cw4SRQI4mA);
+ }
+
+.texto{
+    color: white!important;
+    font-weight: bold!important;
+}
