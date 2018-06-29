@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar color="footer">
+        <ion-title>
+            Nuevo Adjunto
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h5 text-justify>Por favor ingresa los siguientes datos para crear un Adjunto.</h5>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+
+                    <form [formGroup]="forma" (ngSubmit)="registrar()">
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="text" class="iconInput"></ion-icon> Descripción:</ion-label>
+                            <ion-input formControlName="descripcion" name="descripcion" type="text"></ion-input>
+                        </ion-item>
+
+                        <ion-item *ngIf="imagenPreview">
+                            <img {src}="imagenPreview">
+                        </ion-item>
+
+                        <ion-grid>
+                            <ion-row text-center>
+                                <ion-col class="col-4">
+                                    <button ion-button icon-only clear (click)="mostrarCamara()">
+                                        <img src="./assets/imgs/camera.png" class="imagen-crud">
+                                           &nbsp; <p class="texto-foto"> Tomar Fotografía</p>   
+                                    </button>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row text-center>
+                                <ion-col class="col-4">
+                                    <button ion-button icon-only clear (click)="mostrarImagenes()">
+                                        <img src="./assets/imgs/gallery.png" class="imagen-crud">
+                                        &nbsp;<p class="texto-foto"> Seleccionar Fotografía</p>
+                                    </button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+
+                        <button ion-button color="boton" block class="registrar">
+                              REGISTRAR
+                        </button>
+
+                    </form>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

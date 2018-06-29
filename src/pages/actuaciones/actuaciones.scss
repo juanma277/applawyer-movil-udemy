@@ -1,0 +1,59 @@
+page-actuaciones {
+    .caja {
+        font-family: sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        background: #1b577b;
+        margin: 0 0 25px;
+        overflow: hidden;
+        padding: 20px;
+    }
+    .text-caja {
+        font-family: sans-serif;
+        color: white;
+        margin-top: -5%;
+    }
+    .text-caja2 {
+        color: white;
+        margin-top: -3%;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .text-caja3 {
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .textoFecha {
+        font-size: 15px;
+    }
+    .linea {
+        border: 0;
+        border-top: 4px double white;
+        width: 100%;
+    }
+    .fab {
+        contain: layout;
+    }
+    .imagen-notificacion {
+        width: 25px !important;
+    }
+    .imagen-crud {
+        width: 25px !important;
+        border: 0;
+    }
+    button[ion-fab] {
+        overflow: visible;
+        position: relative;
+        ion-label {
+            position: absolute;
+            top: -8px;
+            right: 40px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            line-height: 24px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    }
+}

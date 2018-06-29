@@ -1,20 +1,88 @@
 <ion-header>
-  <ion-navbar color="footer">
-      <button ion-button menuToggle icon-only>
+    <ion-navbar color="footer">
+        <button ion-button menuToggle icon-only>
           <ion-icon name='menu'></ion-icon>
         </button>
-    <ion-title>
-      Inicio
-    </ion-title>
-    <ion-buttons start> 
-        <button ion-button> 
+        <ion-title>
+            Procesos
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button> 
               <img src="./assets/imgs/logo-applawyer1.png">
         </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
 
- 
+
+    <ion-card *ngIf="procesoService.cantidadProcesos === 0">
+        <ion-card-header>
+            <h2 text-center>NO HAY PROCESOS REGISTRADOS</h2>
+        </ion-card-header>
+        <ion-card-content>
+            <p text-justify>Para registrar procesos por favor da clic en la opción
+                <ion-icon name="add-circle"></ion-icon>
+            </p>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor="let proceso of procesoService.procesos">
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="./assets/imgs/proceso-icon.png">
+            </ion-avatar>
+            <h2>{{proceso.radicado}}</h2>
+            <p>{{proceso.fecha}}</p>
+            <p class="texto-peque">{{proceso.juzgado}}</p>
+            <p class="texto-peque">{{proceso.tipo}}</p>
+        </ion-item>
+
+        <ion-card-content>
+            <p><strong>Demandante:</strong> {{proceso.demandante}} </p>
+            <p><strong>Demandado:</strong> {{proceso.demandado}} </p>
+        </ion-card-content>
+
+        <ion-card class="top-5">
+            <ion-card-header>
+                <ion-badge item-end>{{proceso.actuaciones}}</ion-badge> Actuaciones
+            </ion-card-header>
+            <ion-card-content *ngIf="proceso.historico != null">
+                <ion-note>Último Estado </ion-note>
+                <h2><strong>{{proceso.historico | split:"*":0 | uppercase}}</strong></h2>
+                <ion-note>{{proceso.historico | split:"*":2}} </ion-note>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-row class="fondo">
+            <ion-col class="col-2">
+                <button ion-button icon-start clear small (click)="detalles(proceso.id)">
+                  <ion-icon name="information-circle" color="textProceso"></ion-icon>
+                  <p class="texto">Detalles</p>
+                </button>
+            </ion-col>
+
+            <ion-col class="col-2">
+                <button ion-button icon-start clear small>
+                  <ion-icon name="attach" color="textProceso"></ion-icon>
+                  <p class="texto">Adjuntos</p>
+                </button>
+            </ion-col>
+
+            <ion-col class="col-2">
+                <button ion-button icon-start clear small (click)="eliminarProceso()">
+                  <ion-icon name="trash" color="textProceso"></ion-icon>
+                  <p class="texto">Eliminar</p>
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+    <ion-fab right bottom>
+        <button ion-fab color="footer" (click)="nuevoProceso()"><ion-icon name="add-circle"></ion-icon></button>
+    </ion-fab>
+
 </ion-content>

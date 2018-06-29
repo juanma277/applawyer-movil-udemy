@@ -93,6 +93,7 @@ export class RegistroPage implements OnInit {
     this.usuario.terminos = this.forma.value.condiciones; 
 
     this.usuarioService.crearUsuario(this.usuario).subscribe((resp:any)=>{
+      console.log(resp);
       if(resp.error){
         swal("Error", "Existe información duplicada o faltan datos!", "warning");
         loader.dismiss();

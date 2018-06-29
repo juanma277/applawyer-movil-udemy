@@ -92,7 +92,7 @@ export class LoginPage implements OnInit {
     }).then( res => {
       firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
       .then( user => {
-        this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Google', 'USER_ROLE', '', '');
+        this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Google', 'USER_ROLE', '', '', 0);
         this.usuarioService.guardarStorage();
         //this.navCtrl.setRoot(HomePage);
       })
@@ -106,7 +106,7 @@ export class LoginPage implements OnInit {
       this.fb.login(['email', 'public_profile']).then(res => {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         firebase.auth().signInWithCredential(facebookCredential).then(user=>{
-          this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Facebook', 'USER_ROLE', '', '');
+          this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Facebook', 'USER_ROLE', '', '', 0);
           this.usuarioService.guardarStorage();
           //this.navCtrl.setRoot(HomePage);
         }).catch(error =>{
@@ -119,7 +119,7 @@ export class LoginPage implements OnInit {
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(res => {
         let user = res.user;
-        this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Facebook', 'USER_ROLE', '', '');
+        this.usuarioService.cargarUsuario(user.displayName, user.email,user.photoURL, user.uid, 'Facebook', 'USER_ROLE', '', '', 0);
         this.usuarioService.guardarStorage();
         //this.navCtrl.setRoot(HomePage);
       });

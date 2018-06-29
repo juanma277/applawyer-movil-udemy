@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar color="footer">
+        <ion-title>
+            Editar Alerta
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h5 text-justify>Por favor ingresa los siguientes datos para editar la Alerta.</h5>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="actualizar()">
+
+                        <ion-input formControlName="id" name="id" type="hidden" required></ion-input>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="text" class="iconInput"></ion-icon> Descripción:</ion-label>
+                            <ion-input formControlName="descripcion" name="descripcion" type="text" required></ion-input>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="calendar" class="iconInput"></ion-icon> Fecha:</ion-label>
+                            <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" formControlName="fecha" name="fecha" required></ion-datetime>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="clock" class="iconInput"></ion-icon> Hora:</ion-label>
+                            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="hora" name="hora" required></ion-datetime>
+                        </ion-item>
+
+                        <button ion-button color="boton" block class="registrar">
+                              ACTUALIZAR
+                        </button>
+
+                    </form>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

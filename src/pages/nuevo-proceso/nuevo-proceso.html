@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar color="footer">
+        <ion-title>
+            Nuevo Proceso
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h5 text-justify>Por favor ingresa los siguientes datos para crear un proceso.</h5>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrar()">
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="book" class="iconInput"></ion-icon> Tipo Proceso:</ion-label>
+                            <ion-select formControlName="tipo_proceso" name="tipo_proceso" required>
+                                <ion-option *ngFor="let tipo of tipos" value="{{tipo.id}}">{{tipo.nombre}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="briefcase" class="iconInput"></ion-icon> Juzgado:</ion-label>
+                            <ion-select formControlName="juzgado" name="juzgado" required>
+                                <ion-option *ngFor="let juzgado of juzgados" value="{{juzgado.id}}">{{juzgado.nombre}}-{{juzgado.ciudad}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="person" class="iconInput"></ion-icon> Demandante:</ion-label>
+                            <ion-input formControlName="demandante" name="demandante" type="text" required></ion-input>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="person" class="iconInput"></ion-icon> Demandado:</ion-label>
+                            <ion-input formControlName="demandado" name="demandado" type="text" required></ion-input>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="clipboard" class="iconInput"></ion-icon> Radicado:</ion-label>
+                            <ion-input formControlName="radicado" name="radicado" type="text" required></ion-input>
+                        </ion-item>
+
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon name="calendar" class="iconInput"></ion-icon> Fecha:</ion-label>
+                            <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" formControlName="fecha" name="fecha" required></ion-datetime>
+                        </ion-item>
+
+                        <button ion-button color="boton" block class="registrar">
+                              REGISTRAR
+                        </button>
+
+                    </form>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

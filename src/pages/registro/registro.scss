@@ -1,38 +1,34 @@
 page-registro {
-
-    .texto-app{
+    .texto-app {
         font-family: 'Dancing Script', cursive;
         font-size: 25px;
     }
-
-    .registar{
+    .registar {
+        width: 100%;
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
         border-radius: 10px;
         padding: 0 4px 0 4px;
+        background-color: #1b577b;
     }
-
-    .iconInput{
+    .iconInput {
         color: #070707;
         padding: 0 4px 0 4px;
     }
-
     #rounded {
         width: 100%;
         height: 50%;
         -moz-border-radius: 50px;
         -webkit-border-radius: 50px;
         border-radius: 10px;
-        margin-bottom: 10px;  
+        margin-bottom: 10px;
     }
-
     #rounded2 {
         width: 100%;
         height: 50%;
         left: -15px;
     }
-
-    .fondoInput{
+    .fondoInput {
         background-color: #408BB8;
         color: white;
         width: 100%;
@@ -40,15 +36,11 @@ page-registro {
         border-color: white;
         margin-bottom: 10px;
     }
-
-    .fondoInputCheck{
+    .fondoInputCheck {
         background-color: transparent;
-
     }
-
-    .iconInput{
+    .iconInput {
         color: white;
         padding: 0 4px 0 4px;
     }
-
 }

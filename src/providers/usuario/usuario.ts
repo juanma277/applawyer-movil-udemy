@@ -19,7 +19,10 @@ export class UsuarioProvider {
 
   crearUsuario(usuario: Usuario){
     let url = URL_SERVICIOS + 'users/create';
-    return this.http.post(url, {'nombres': usuario.nombre, 'email':usuario.email, 'password': usuario.password, 'uid':usuario.uid, 'provider':usuario.provider, 'notificaciones':usuario.notificaciones, 'terminos':usuario.terminos});    
+    return this.http.post(url, {'nombres': usuario.nombre, 'email':usuario.email, 'password': usuario.password, 'uid':usuario.uid, 'provider':usuario.provider, 'notificaciones':usuario.notificaciones, 'terminos':usuario.terminos})
+                .map((resp:any)=>{
+                  return resp;
+                });    
   }
 
   loginNormal(email:string, password:string){
@@ -29,7 +32,7 @@ export class UsuarioProvider {
         swal("Error", "Datos Incorrectos!", "warning");
         return false;
       }else{
-        this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id);
+        this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos);
         this.guardarStorage();
         return true;
       }
@@ -39,7 +42,7 @@ export class UsuarioProvider {
     });
   }
 
-  cargarUsuario(nombre:string, email:string, imagen:string, uid:string, provider:string, role:string, estado:string, id:string){
+  cargarUsuario(nombre:string, email:string, imagen:string, uid:string, provider:string, role:string, estado:string, id:string, procesos:number){
     this.usuario.nombre  = nombre;
     this.usuario.email  = email;
     this.usuario.imagen  = imagen;
@@ -48,6 +51,7 @@ export class UsuarioProvider {
     this.usuario.role = role;
     this.usuario.estado = estado;
     this.usuario.id = id;
+    this.usuario.procesos = procesos;
   }
 
 
@@ -117,5 +121,6 @@ export interface Usuario{
   notificaciones?:boolean,
   terminos?:boolean,
   remember?:string,
-  id?:string
+  id?:string,
+  procesos?:number
 }

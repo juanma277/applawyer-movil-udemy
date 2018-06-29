@@ -15,17 +15,33 @@ import { MisProcesosPage } from '../pages/mis-procesos/mis-procesos';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
 import { MiPerfilPage } from '../pages/mi-perfil/mi-perfil';
 import { InformesPage } from '../pages/informes/informes';
+import { AboutPage } from '../pages/about/about';
+import { NuevoProcesoPage } from '../pages/nuevo-proceso/nuevo-proceso';
+import { ActuacionesPage } from '../pages/actuaciones/actuaciones';
+import { AlertasPage } from '../pages/alertas/alertas';
+import { AdjuntosPage } from '../pages/adjuntos/adjuntos';
+import { EditarAlertaPage } from '../pages/editar-alerta/editar-alerta';
 
 
+//PIPES
+import { SplitPipe } from '../pipes/split/split';
 
 //PROVIDER
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { AjustesProvider } from '../providers/ajustes/ajustes';
+import { ProcesoProvider } from '../providers/proceso/proceso';
+import { TipoProcesoProvider } from '../providers/tipo-proceso/tipo-proceso';
+import { JuzgadoProvider } from '../providers/juzgado/juzgado';
+import { AlertaProvider } from '../providers/alerta/alerta';
+import { AdjuntoProvider } from '../providers/adjunto/adjunto';
 
 //PLUGINS
 import { Facebook} from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
+
 
 //FORMULARIOS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -50,7 +66,14 @@ import { firebaseConfig } from '../config/firebase.config';
     MisProcesosPage,
     NotificacionesPage,
     MiPerfilPage,
-    InformesPage
+    InformesPage,
+    AboutPage,
+    NuevoProcesoPage,
+    ActuacionesPage,
+    AlertasPage,
+    AdjuntosPage,
+    EditarAlertaPage,
+    SplitPipe
   ],
   imports: [
     BrowserModule,
@@ -74,7 +97,13 @@ import { firebaseConfig } from '../config/firebase.config';
     MisProcesosPage,
     NotificacionesPage,
     MiPerfilPage,
-    InformesPage
+    InformesPage,
+    AboutPage,
+    NuevoProcesoPage,
+    ActuacionesPage,
+    AlertasPage,
+    AdjuntosPage,
+    EditarAlertaPage
   ],
   providers: [
     StatusBar,
@@ -83,7 +112,14 @@ import { firebaseConfig } from '../config/firebase.config';
     UsuarioProvider,
     Facebook,
     GooglePlus,
-    AjustesProvider
+    AjustesProvider,
+    ProcesoProvider,
+    TipoProcesoProvider,
+    JuzgadoProvider,
+    AlertaProvider,
+    Camera,
+    ImagePicker,
+    AdjuntoProvider
   ]
 })
 export class AppModule {}

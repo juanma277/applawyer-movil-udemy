@@ -1,0 +1,118 @@
+<ion-header>
+    <ion-navbar color="footer">
+        <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+        <ion-title>
+            Detalles
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button> 
+              <img src="./assets/imgs/logo-applawyer1.png">
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar no-border-bottom color="toolbar">
+        <ion-segment [(ngModel)]="opciones" color="blanco">
+            <ion-segment-button value="actuaciones">
+                Actuaciones
+            </ion-segment-button>
+            <ion-segment-button value="alertas">
+                Alertas
+            </ion-segment-button>
+            <ion-segment-button value="adjuntos">
+                Adjuntos
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div *ngFor="let data of dataProceso" class="caja">
+        <p class="text-caja" text-center>{{data.radicado}}</p>
+        <p class="text-caja2" text-center>{{data.ciudad}}</p>
+        <p class="text-caja2" text-center>{{data.juzgado}}</p>
+        <hr class="linea">
+        <div class="text-caja3">
+            <p text-center>{{data.demandante | uppercase}} - {{data.demandado | uppercase}}</p>
+            <p class="text-caja2" text-center>{{data.fecha | date:'mediumDate' }}</p>
+        </div>
+    </div>
+
+
+
+    <div [ngSwitch]="opciones">
+        <ion-list *ngSwitchCase="'actuaciones'">
+            <ion-item *ngFor="let datos of proceso" text-wrap>
+
+                <h2>{{datos.actuacion | uppercase }}</h2>
+
+                <p text-justify>{{datos.anotacion}}</p>
+
+                <div text-right>
+                    <ion-note class="textoFecha">{{datos.fecha | date:'mediumDate'}}</ion-note>
+                </div>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'alertas'">
+            <ion-item *ngFor="let alerta of alertaService.alertas" text-wrap>
+
+                <img item-start src="./assets/imgs/anillo.png" class="imagen-notificacion">
+
+                <h2>{{alerta.descripcion }}</h2>
+
+                <p text-justify>{{alerta.fecha | date:'mediumDate'}} - {{alerta.hora}}</p>
+
+                <div text-right>
+
+                    <button ion-button icon-only clear color="transparente" (click)="editarAlerta(alerta.id)">
+                        <img src="./assets/imgs/editar.png" class="imagen-crud">
+
+                    </button>
+
+                    <button ion-button icon-only clear color="transparente" (click)="eliminarAlerta(alerta.id)">
+                            <img src="./assets/imgs/delete.png" class="imagen-crud">
+                    </button>
+
+                </div>
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'adjuntos'">
+            <ion-item *ngFor="let datos of proceso" text-wrap>
+
+                <h2>{{datos.actuacion | uppercase }}</h2>
+
+                <p text-justify>{{datos.anotacion}}</p>
+
+                <div text-right>
+                    <ion-note class="textoFecha">{{datos.fecha | date:'mediumDate'}}</ion-note>
+                </div>
+
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <ion-fab right bottom>
+        <button ion-fab color="footer">
+            <ion-icon name="add-circle"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+            <button ion-fab (click)="nuevaAlerta()">
+            <ion-icon name="notifications"></ion-icon>
+            <ion-label>Añadir Alerta</ion-label>
+          </button>
+            <button ion-fab (click)="nuevoAdjunto()">
+            <ion-icon name="attach"></ion-icon>
+            <ion-label>Añadir Adjunto</ion-label>
+          </button>
+        </ion-fab-list>
+    </ion-fab>
+
+
+</ion-content>

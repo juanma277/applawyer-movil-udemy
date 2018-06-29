@@ -11,6 +11,8 @@ import { MiPerfilPage } from '../pages/mi-perfil/mi-perfil';
 import { MisProcesosPage } from '../pages/mis-procesos/mis-procesos';
 import { InformesPage } from '../pages/informes/informes';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
+import { AboutPage } from '../pages/about/about';
+import { ProcesoProvider } from '../providers/proceso/proceso';
 
 declare var swal: any;
 
@@ -24,6 +26,8 @@ export class MyApp {
   procesosPage = MisProcesosPage;
   informesPage = InformesPage;
   notificacionesPage = NotificacionesPage;
+  aboutPage = AboutPage;
+  cantidadProcesos:number = 0;
 
   rootPage:any;
   @ViewChild(Nav) nav: NavController;
@@ -33,8 +37,9 @@ export class MyApp {
                 splashScreen: SplashScreen,
                 private ajustesProvider: AjustesProvider,
                 public usuarioService: UsuarioProvider,
-                public alertCtrl: AlertController
-              ) {
+                public alertCtrl: AlertController,
+                public procesoService:ProcesoProvider
+            ) {
     platform.ready().then(() => {
         this.ajustesProvider.cargarStorage().then(()=>{
           if(this.ajustesProvider.ajustes.intro){
@@ -48,7 +53,7 @@ export class MyApp {
 
         this.usuarioService.cargarStorage().then(()=>{
           if(this.usuarioService.usuario.nombre){
-            this.rootPage = HomePage;
+              this.rootPage = HomePage;            
           }else{
             this.rootPage = LoginPage;
           }
