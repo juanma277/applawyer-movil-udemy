@@ -89,9 +89,9 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.120255805446-sb2ntjd9887jc175b8m9v7l8usdes255" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.3.2" />
-    <engine name="android" spec="6.4.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
+    <engine name="android" spec="6.4.0" />
 </widget>

@@ -5,6 +5,7 @@ import { AlertasPage } from '../alertas/alertas';
 import { AdjuntosPage } from '../adjuntos/adjuntos';
 import { AlertaProvider } from '../../providers/alerta/alerta';
 import { EditarAlertaPage } from '../editar-alerta/editar-alerta';
+import { AdjuntoProvider } from '../../providers/adjunto/adjunto';
 
 @IonicPage()
 @Component({
@@ -25,12 +26,14 @@ export class ActuacionesPage {
                public loadingCtrl: LoadingController,
                public modalCtrl: ModalController,
                public alertaService: AlertaProvider,
-               public alertCtrl: AlertController
+               public alertCtrl: AlertController,
+               public adjuntoService: AdjuntoProvider
              ) 
         {
           this.proceso_id = navParams.get('proceso_id');
           this.cargarProceso();
           this.alertaService.cargarAlertaPorProceso(this.proceso_id).subscribe();
+          this.adjuntoService.cargarAdjuntosPorProceso(this.proceso_id).subscribe();
         }
   
   cargarProceso(){

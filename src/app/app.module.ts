@@ -25,6 +25,8 @@ import { EditarAlertaPage } from '../pages/editar-alerta/editar-alerta';
 
 //PIPES
 import { SplitPipe } from '../pipes/split/split';
+import { ImagenPipe } from '../pipes/imagen/imagen';
+
 
 //PROVIDER
 import { UsuarioProvider } from '../providers/usuario/usuario';
@@ -73,7 +75,8 @@ import { firebaseConfig } from '../config/firebase.config';
     AlertasPage,
     AdjuntosPage,
     EditarAlertaPage,
-    SplitPipe
+    SplitPipe,
+    ImagenPipe
   ],
   imports: [
     BrowserModule,

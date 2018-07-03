@@ -84,14 +84,14 @@
         </ion-list>
 
         <ion-list *ngSwitchCase="'adjuntos'">
-            <ion-item *ngFor="let datos of proceso" text-wrap>
+            <ion-item *ngFor="let alerta of adjuntoService.adjuntos" text-wrap>
 
-                <h2>{{datos.actuacion | uppercase }}</h2>
+                <h2>{{alerta.descripcion | uppercase }}</h2>
 
-                <p text-justify>{{datos.anotacion}}</p>
+                <img [src]="alerta.archivo | imagen">
 
                 <div text-right>
-                    <ion-note class="textoFecha">{{datos.fecha | date:'mediumDate'}}</ion-note>
+                    <ion-note class="textoFecha">{{alerta.created_at | date:'mediumDate'}}</ion-note>
                 </div>
 
             </ion-item>
