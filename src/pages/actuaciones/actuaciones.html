@@ -46,21 +46,16 @@
     <div [ngSwitch]="opciones">
         <ion-list *ngSwitchCase="'actuaciones'">
             <ion-item *ngFor="let datos of proceso" text-wrap>
-
                 <h2>{{datos.actuacion | uppercase }}</h2>
-
                 <p text-justify>{{datos.anotacion}}</p>
-
                 <div text-right>
                     <ion-note class="textoFecha">{{datos.fecha | date:'mediumDate'}}</ion-note>
                 </div>
-
             </ion-item>
         </ion-list>
 
         <ion-list *ngSwitchCase="'alertas'">
             <ion-item *ngFor="let alerta of alertaService.alertas" text-wrap>
-
                 <img item-start src="./assets/imgs/anillo.png" class="imagen-notificacion">
 
                 <h2>{{alerta.descripcion }}</h2>
@@ -68,32 +63,33 @@
                 <p text-justify>{{alerta.fecha | date:'mediumDate'}} - {{alerta.hora}}</p>
 
                 <div text-right>
-
                     <button ion-button icon-only clear color="transparente" (click)="editarAlerta(alerta.id)">
                         <img src="./assets/imgs/editar.png" class="imagen-crud">
-
                     </button>
 
                     <button ion-button icon-only clear color="transparente" (click)="eliminarAlerta(alerta.id)">
-                            <img src="./assets/imgs/delete.png" class="imagen-crud">
+                        <img src="./assets/imgs/delete.png" class="imagen-crud">
                     </button>
-
                 </div>
-
             </ion-item>
         </ion-list>
 
         <ion-list *ngSwitchCase="'adjuntos'">
-            <ion-item *ngFor="let alerta of adjuntoService.adjuntos" text-wrap>
-
-                <h2>{{alerta.descripcion | uppercase }}</h2>
-
-                <img [src]="alerta.archivo | imagen">
+            <ion-item *ngFor="let adjunto of adjuntoService.adjuntos" text-wrap>
+                <h2>{{adjunto.descripcion | uppercase }}</h2>
+                <img [src]="adjunto.archivo | imagen" imageViewer>
+                <p>{{adjunto.created_at | date:'mediumDate'}}</p>
 
                 <div text-right>
-                    <ion-note class="textoFecha">{{alerta.created_at | date:'mediumDate'}}</ion-note>
-                </div>
+                    <button ion-button icon-only clear color="transparente" (click)="editarAdjunto(adjunto.id)">
+                        <img src="./assets/imgs/editar.png" class="imagen-crud">
 
+                    </button>
+
+                    <button ion-button icon-only clear color="transparente" (click)="eliminarAdjunto(adjunto.id)">
+                            <img src="./assets/imgs/delete.png" class="imagen-crud">
+                    </button>
+                </div>
             </ion-item>
         </ion-list>
     </div>

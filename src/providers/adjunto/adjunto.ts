@@ -11,9 +11,7 @@ export class AdjuntoProvider {
 
   constructor(public http: HttpClient) {}
 
-  crearAlerta(adjunto: Adjunto){
-
-    console.log(adjunto);
+  crearAdjunto(adjunto: Adjunto){
     
     let url = URL_SERVICIOS + 'adjuntos/create';
     return this.http.post(url, {'proceso_id': adjunto.proceso_id, 'descripcion': adjunto.descripcion, 'archivo': adjunto.archivo})
@@ -38,6 +36,44 @@ export class AdjuntoProvider {
     }, error =>{
       swal("Advertencia", "Ha ocurrido un error por favor intentalo nuevamente!", "warning");
     });
+  }
+
+  cargarDatosAdjunto(adjunto_id:string){
+    let url = URL_SERVICIOS + 'adjuntos/getAdjunto/'+adjunto_id;
+    return this.http.get(url).map((resp:any)=>{
+      return resp;      
+    });
+  }
+
+  actualizarAdjunto(adjunto: Adjunto){
+    this.adjuntos =[];
+    let url = URL_SERVICIOS + 'adjuntos/update/'+adjunto.id;
+    return this.http.put(url, {'proceso_id': adjunto.proceso_id, 'descripcion': adjunto.descripcion, 'archivo': adjunto.archivo})
+                .map((resp:any)=>{
+                  for(var i=0; i<resp.adjuntos.length ; i++){
+                    this.adjuntos.push(resp.adjuntos[i]);
+                  }
+                  return resp;
+                });
+  }
+
+  eliminarAdjunto(adjunto_id:string, proceso_id:string){
+    this.adjuntos = [];
+    let url = URL_SERVICIOS + 'adjuntos/delete/'+adjunto_id+'/'+proceso_id;
+
+    return this.http.delete(url).map((resp:any)=>{
+      if(resp.error){
+        return resp;
+      }else{
+        for(var i=0; i<resp.adjuntos.length ; i++){
+          this.adjuntos.push(resp.adjuntos[i]);
+        }
+        return resp;
+      }
+    }, error =>{
+      swal("Advertencia", "Ha ocurrido un error por favor intentalo nuevamente!", "warning");
+    });
+
   }
 
 }

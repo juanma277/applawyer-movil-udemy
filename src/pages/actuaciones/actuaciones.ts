@@ -6,6 +6,7 @@ import { AdjuntosPage } from '../adjuntos/adjuntos';
 import { AlertaProvider } from '../../providers/alerta/alerta';
 import { EditarAlertaPage } from '../editar-alerta/editar-alerta';
 import { AdjuntoProvider } from '../../providers/adjunto/adjunto';
+import { EditarAdjuntoPage } from '../editar-adjunto/editar-adjunto';
 
 @IonicPage()
 @Component({
@@ -85,6 +86,14 @@ export class ActuacionesPage {
     modal.present(); 
   }
 
+  editarAdjunto(adjunto_id:string){   
+    const modal = this.modalCtrl.create(EditarAdjuntoPage, {
+      adjunto_id: adjunto_id,
+      proceso_id: this.proceso_id
+    });
+    modal.present(); 
+  }
+
   eliminarAlerta(alerta_id:string){
     const confirm = this.alertCtrl.create({
       title: 'Eliminar Alarma',
@@ -114,7 +123,38 @@ export class ActuacionesPage {
       ]
     });
     confirm.present();
-  }  
+  }
+
+  eliminarAdjunto(adjunto_id:string){
+    const confirm = this.alertCtrl.create({
+      title: 'Eliminar Adjunto',
+      message: '¿Seguro que deseas eliminar el Adjunto?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            //console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+
+            const loader = this.loadingCtrl.create({
+              content: "Por favor espera...",
+            });
+
+            loader.present();
+
+            this.adjuntoService.eliminarAdjunto(adjunto_id, this.proceso_id).subscribe((resp:any)=>{
+              loader.dismiss();
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
+  } 
   
 }
 

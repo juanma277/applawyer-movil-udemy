@@ -1,13 +1,13 @@
 <ion-header>
     <ion-toolbar color="footer">
         <ion-title>
-            Nuevo Adjunto
+            Editar Adjunto
         </ion-title>
         <ion-buttons start>
             <button ion-button (click)="dismiss()">
-          <span ion-text color="primary" showWhen="ios">Cancel</span>
-          <ion-icon ios="ios-close" md="md-close"></ion-icon>
-        </button>
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -16,13 +16,18 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <h5 text-justify>Por favor ingresa los siguientes datos para crear un Adjunto.</h5>
+                <h5 text-justify>Por favor ingresa los siguientes datos para editar el Adjunto.</h5>
             </ion-col>
         </ion-row>
 
         <ion-row>
             <ion-col>
                 <ion-list inset>
+
+                    <div text-center>
+                        <img [src]="adjunto.archivo | imagen" imageViewer>
+                    </div>
+                    <br>
 
                     <ion-grid>
                         <ion-row text-center>
@@ -44,21 +49,19 @@
                         </ion-row>
                     </ion-grid>
 
-                    <form [formGroup]="forma" (ngSubmit)="registrar()">
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="actualizar()">
+
+                        <ion-input formControlName="id" name="id" type="hidden" required></ion-input>
 
                         <ion-item id="rounded" class="fondoInput">
                             <ion-label color="blanco">
                                 <ion-icon name="text" class="iconInput"></ion-icon> Descripción:</ion-label>
-                            <ion-input formControlName="descripcion" name="descripcion" type="text"></ion-input>
-                        </ion-item>
-
-                        <ion-item *ngIf="imagenPreview">
-                            <img {src}="imagenPreview" imageViewer>
+                            <ion-input formControlName="descripcion" name="descripcion" type="text" required></ion-input>
                         </ion-item>
 
                         <button ion-button color="boton" block class="registrar">
-                              REGISTRAR
-                        </button>
+                            ACTUALIZAR
+                      </button>
 
                     </form>
 

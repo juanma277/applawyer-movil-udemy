@@ -21,11 +21,13 @@ import { ActuacionesPage } from '../pages/actuaciones/actuaciones';
 import { AlertasPage } from '../pages/alertas/alertas';
 import { AdjuntosPage } from '../pages/adjuntos/adjuntos';
 import { EditarAlertaPage } from '../pages/editar-alerta/editar-alerta';
-
+import { EditarAdjuntoPage } from '../pages/editar-adjunto/editar-adjunto';
+import { CambiarPasswordPage } from '../pages/cambiar-password/cambiar-password';
 
 //PIPES
 import { SplitPipe } from '../pipes/split/split';
 import { ImagenPipe } from '../pipes/imagen/imagen';
+import { ImagenUserPipe } from '../pipes/imagen-user/imagen-user';
 
 
 //PROVIDER
@@ -36,6 +38,7 @@ import { TipoProcesoProvider } from '../providers/tipo-proceso/tipo-proceso';
 import { JuzgadoProvider } from '../providers/juzgado/juzgado';
 import { AlertaProvider } from '../providers/alerta/alerta';
 import { AdjuntoProvider } from '../providers/adjunto/adjunto';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 //PLUGINS
 import { Facebook} from '@ionic-native/facebook';
@@ -43,6 +46,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { ChartsModule } from 'ng2-charts';
 
 
 //FORMULARIOS
@@ -75,8 +79,11 @@ import { firebaseConfig } from '../config/firebase.config';
     AlertasPage,
     AdjuntosPage,
     EditarAlertaPage,
+    EditarAdjuntoPage,
+    CambiarPasswordPage,
     SplitPipe,
-    ImagenPipe
+    ImagenPipe,
+    ImagenUserPipe
   ],
   imports: [
     BrowserModule,
@@ -87,7 +94,9 @@ import { firebaseConfig } from '../config/firebase.config';
     IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicImageViewerModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -106,7 +115,9 @@ import { firebaseConfig } from '../config/firebase.config';
     ActuacionesPage,
     AlertasPage,
     AdjuntosPage,
-    EditarAlertaPage
+    EditarAlertaPage,
+    EditarAdjuntoPage,
+    CambiarPasswordPage
   ],
   providers: [
     StatusBar,

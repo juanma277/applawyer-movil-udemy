@@ -3,19 +3,77 @@
         <button ion-button menuToggle icon-only>
             <ion-icon name='menu'></ion-icon>
           </button>
-      <ion-title>
-        Mi Perfil
-      </ion-title>
-      <ion-buttons start> 
-          <button ion-button> 
+        <ion-title>
+            Mi Perfil
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button> 
                 <img src="./assets/imgs/logo-applawyer1.png">
           </button>
-      </ion-buttons>
+        </ion-buttons>
     </ion-navbar>
-  </ion-header>
-  
-  <ion-content>
-  
-   
-  </ion-content>
-  
+</ion-header>
+
+<ion-content>
+
+    <div class="fondo1" *ngIf="usuarioService.usuario.imagen">
+        <img [src]="usuarioService.usuario.imagen | imagenUser" class="avatar" imageViewer>
+    </div>
+
+    <div class="fondo1" *ngIf="!usuarioService.usuario.imagen">
+        <img src="./assets/imgs/user-masculino.png" class="avatar" imageViewer>
+    </div>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <button ion-button color="footer" round class="btn-foto" (click)="mostrarCamara()">TOMAR FOTO</button>
+            </ion-col>
+
+            <ion-col>
+            </ion-col>
+
+            <ion-col>
+                <button ion-button color="footer" round class="btn-foto" (click)="mostrarImagenes()">SELECCIONAR</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="datos-iniciales" text-center>
+        <h2 class="titulo-nombre">{{usuarioService.usuario.nombre}}</h2>
+        <p class="titulo-email">{{usuarioService.usuario.email}}</p>
+    </div>
+
+    <div padding>
+        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="actualizar()">
+
+            <ion-item id="rounded" class="fondoInput">
+                <ion-label color="blanco">
+                    <ion-icon ios="ios-person" md="md-person" class="iconInput" class="iconInput"></ion-icon> Nombres:</ion-label>
+                <ion-input formControlName="nombres" name="nombres" type="text" required></ion-input>
+            </ion-item>
+
+            <ion-item id="rounded" class="fondoInput">
+                <ion-label color="blanco">
+                    <ion-icon ios="ios-mail" md="md-mail" class="iconInput" class="iconInput"></ion-icon> Email:</ion-label>
+                <ion-input formControlName="email" name="email" type="email" required></ion-input>
+            </ion-item>
+
+            <ion-item id="rounded2" class="fondoInputCheck">
+                <ion-label>
+                    Permitir Notificaciones</ion-label>
+                <ion-toggle formControlName="notificaciones" name="notificaciones" color="default"></ion-toggle>
+            </ion-item>
+
+            <button ion-button block class="registar">
+                ACTUALIZAR DATOS
+            </button>
+
+        </form>
+
+        <button ion-button block class="reset-password" (click)="cambiarPassword()">
+                CAMBIAR CONTRASEÑA
+            </button>
+    </div>
+
+</ion-content>

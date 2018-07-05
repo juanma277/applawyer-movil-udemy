@@ -46,7 +46,7 @@ export class HomePage {
                   });
   }
 
-  eliminarProceso(){
+  eliminarProceso(proceso_id:string){
     const confirm = this.alertCtrl.create({
       title: 'Eliminar Proceso',
       message: '¿Seguro que deseas eliminar el proceso?',
@@ -54,13 +54,37 @@ export class HomePage {
         {
           text: 'Cancelar',
           handler: () => {
-            console.log('Cancelar clicked');
+            //console.log('Cancelar clicked');
           }
         },
         {
           text: 'Aceptar',
           handler: () => {
-            console.log('Aceptar clicked');      
+            
+                  const loader = this.loadingCtrl.create({
+                    content: "Por favor espera...",
+                  });
+
+                  loader.present();
+
+            this.procesoService.eliminarProceso(proceso_id, this.usuarioService.usuario.id).subscribe((resp:any)=>{
+              if(resp.error){
+                swal ('Error', 'Ha ocurrido un error, por favor intentalo nuevamente', 'warning');
+                return
+              }else{
+                this.procesoService.cargarProcesos(this.user.id).subscribe((resp:any)=>{
+                  if(resp.error){
+                    this.advertencia = true;
+                    loader.dismiss();
+                    return;
+                  }
+                  this.advertencia = false;
+                  loader.dismiss();
+                  return;
+                  
+                });
+              }
+            });
           }
         }
       ]

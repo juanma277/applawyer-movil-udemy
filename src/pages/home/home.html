@@ -57,22 +57,15 @@
         </ion-card>
 
         <ion-row class="fondo">
-            <ion-col class="col-2">
+            <ion-col class="col-2" text-center>
                 <button ion-button icon-start clear small (click)="detalles(proceso.id)">
                   <ion-icon name="information-circle" color="textProceso"></ion-icon>
                   <p class="texto">Detalles</p>
                 </button>
             </ion-col>
 
-            <ion-col class="col-2">
-                <button ion-button icon-start clear small>
-                  <ion-icon name="attach" color="textProceso"></ion-icon>
-                  <p class="texto">Adjuntos</p>
-                </button>
-            </ion-col>
-
-            <ion-col class="col-2">
-                <button ion-button icon-start clear small (click)="eliminarProceso()">
+            <ion-col class="col-2" text-center>
+                <button ion-button icon-start clear small (click)="eliminarProceso(proceso.id)">
                   <ion-icon name="trash" color="textProceso"></ion-icon>
                   <p class="texto">Eliminar</p>
                 </button>

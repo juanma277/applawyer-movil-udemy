@@ -37,8 +37,6 @@ export class AlertaProvider {
     return this.http.get(url).map((resp:any)=>{
       return resp;      
     });
-
-
   }
 
   cargarAlertaPorProceso(proceso_id:string){

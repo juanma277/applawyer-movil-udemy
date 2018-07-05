@@ -6,7 +6,7 @@
     </ion-header>
     <ion-content class="fondo">
 
-        <ion-card>
+        <ion-card (click)="openPage(perfilPage)" menuClose>
             <ion-item *ngIf="!usuarioService.usuario.imagen" class="fondo2">
                 <ion-avatar item-start>
                     <img src="./assets/imgs/user-masculino.png">
@@ -15,12 +15,12 @@
                 <p class="texto">{{usuarioService.usuario.email}}</p>
             </ion-item>
 
-            <ion-item *ngIf="usuarioService.usuario.imagen">
+            <ion-item *ngIf="usuarioService.usuario.imagen" class="fondo2">
                 <ion-avatar item-start>
-                    <img [src]="usuarioService.usuario.nombre">
+                    <img [src]="usuarioService.usuario.imagen | imagenUser">
                 </ion-avatar>
-                <h2>{{usuarioService.usuario.nombre}}</h2>
-                <p>{{usuarioService.usuario.email}}</p>
+                <h2 class="texto">{{usuarioService.usuario.nombre}}</h2>
+                <p class="texto">{{usuarioService.usuario.email}}</p>
             </ion-item>
         </ion-card>
 
