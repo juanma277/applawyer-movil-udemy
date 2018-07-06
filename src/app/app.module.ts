@@ -23,6 +23,11 @@ import { AdjuntosPage } from '../pages/adjuntos/adjuntos';
 import { EditarAlertaPage } from '../pages/editar-alerta/editar-alerta';
 import { EditarAdjuntoPage } from '../pages/editar-adjunto/editar-adjunto';
 import { CambiarPasswordPage } from '../pages/cambiar-password/cambiar-password';
+import { PorCiudadPage } from '../pages/por-ciudad/por-ciudad';
+import { PorEstadoPage } from '../pages/por-estado/por-estado';
+import { PorJuzgadoPage } from '../pages/por-juzgado/por-juzgado';
+import { PorTipoPage } from '../pages/por-tipo/por-tipo';
+
 
 //PIPES
 import { SplitPipe } from '../pipes/split/split';
@@ -81,6 +86,10 @@ import { firebaseConfig } from '../config/firebase.config';
     EditarAlertaPage,
     EditarAdjuntoPage,
     CambiarPasswordPage,
+    PorCiudadPage,
+    PorEstadoPage,
+    PorJuzgadoPage,
+    PorTipoPage,
     SplitPipe,
     ImagenPipe,
     ImagenUserPipe
@@ -117,7 +126,11 @@ import { firebaseConfig } from '../config/firebase.config';
     AdjuntosPage,
     EditarAlertaPage,
     EditarAdjuntoPage,
-    CambiarPasswordPage
+    CambiarPasswordPage,
+    PorCiudadPage,
+    PorEstadoPage,
+    PorJuzgadoPage,
+    PorTipoPage
   ],
   providers: [
     StatusBar,

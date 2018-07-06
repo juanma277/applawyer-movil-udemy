@@ -16,7 +16,7 @@
 
 <ion-content padding>
 
-    <h5 text-justify>Por favor desliza a la izquierda y selecciona el tipo de Grafica que deseas para ver el informe.</h5>
+    <h5 text-justify>Desliza a la izquierda y selecciona el tipo de Grafica que deseas para ver el informe.</h5>
 
     <ion-list>
         <ion-item-sliding>
@@ -26,10 +26,10 @@
             </ion-item>
 
             <ion-item-options side="right">
-                <button ion-button color="primary">
+                <button ion-button color="primary" (click)="porJuzgado(1)">
                     <ion-icon name="stats"></ion-icon>
                 </button>
-                <button ion-button color="secondary">
+                <button ion-button color="secondary" (click)="porJuzgado(2)">
                     <ion-icon name="pie"></ion-icon>
                 </button>
             </ion-item-options>
@@ -42,10 +42,10 @@
             </ion-item>
 
             <ion-item-options side="right">
-                <button ion-button color="primary">
+                <button ion-button color="primary" (click)="porTipo(1)">
                         <ion-icon name="stats"></ion-icon>
-                    </button>
-                <button ion-button color="secondary">
+                </button>
+                <button ion-button color="secondary" (click)="porTipo(2)">
                         <ion-icon name="pie"></ion-icon>
                     </button>
             </ion-item-options>
@@ -58,10 +58,10 @@
             </ion-item>
 
             <ion-item-options side="right">
-                <button ion-button color="primary">
+                <button ion-button color="primary" (click)="porCiudad(1)">
                             <ion-icon name="stats"></ion-icon>
-                        </button>
-                <button ion-button color="secondary">
+                </button>
+                <button ion-button color="secondary" (click)="porCiudad(2)">
                             <ion-icon name="pie"></ion-icon>
                         </button>
             </ion-item-options>
@@ -75,10 +75,10 @@
             </ion-item>
 
             <ion-item-options side="right">
-                <button ion-button color="primary">
+                <button ion-button color="primary" (click)="porEstado(1)">
                             <ion-icon name="stats"></ion-icon>
                         </button>
-                <button ion-button color="secondary">
+                <button ion-button color="secondary" (click)="porEstado(2)">
                             <ion-icon name="pie"></ion-icon>
                         </button>
             </ion-item-options>

@@ -63,6 +63,13 @@ export class ProcesoProvider {
     });    
   }
 
+  procesosPorJuzgado(user_id:string){
+    let url = URL_SERVICIOS +'processes/porJuzgado/'+user_id;
+    return this.http.get(url).map((resp:any)=>{
+      return resp;
+    });
+  }
+
 }
 
 export interface Proceso{
