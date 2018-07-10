@@ -5,14 +5,68 @@
         </ion-title>
         <ion-buttons start>
             <button ion-button (click)="dismiss()">
-      <span ion-text color="primary" showWhen="ios">Cancel</span>
-      <ion-icon ios="ios-close" md="md-close"></ion-icon>
-    </button>
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon ios="ios-close" md="md-close"></ion-icon>
+        </button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
+    <div *ngIf="opcion === 1">
+        <div style="display: block">
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+        </div>
+    </div>
 
+    <div style="display: block" *ngIf="opcion === 2">
+        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+    </div>
+
+    <table class="resumen">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>%</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let proceso of procesos">
+                <td>{{proceso.nombre}}</td>
+                <td>{{proceso.cantidad}}</td>
+                <td>{{proceso.cantidad / total | percent}} </td>
+            </tr>
+
+            <tr>
+                <th>Total</th>
+                <td><strong>{{total}}</strong></td>
+                <td><strong>{{1 | percent}}</strong></td>
+            </tr>
+
+        </tbody>
+    </table>
 </ion-content>
+
+
+<ion-footer>
+
+    <ion-toolbar color="footer">
+
+        <ion-row>
+            <ion-col col-6 text-center>
+                <button ion-button icon-end color="royal" (click)="cambiarGrafica(1)" clear class="boton-bar">
+                                    <ion-icon ios="ios-stats" md="md-stats"></ion-icon>                
+                            </button>
+            </ion-col>
+            <ion-col col-6 text-center>
+                <button ion-button icon-end color="royal" (click)="cambiarGrafica(2)" clear class="boton-pie">
+                                    <ion-icon ios="ios-pie" md="md-pie"></ion-icon>                
+                            </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-toolbar>
+</ion-footer>

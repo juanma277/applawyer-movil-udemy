@@ -16,76 +16,28 @@
 
 <ion-content padding>
 
-    <h5 text-justify>Desliza a la izquierda y selecciona el tipo de Grafica que deseas para ver el informe.</h5>
+    <h5 text-justify>Por favor selecciona el tipo de Informe.</h5>
 
     <ion-list>
-        <ion-item-sliding>
-            <ion-item text-wrap>
+        <button ion-item text-wrap (click)="porJuzgado(1)">
                 <h2>Por Juzgado</h2>
                 <p text-justify>Conoce cuantos procesos tienes registrados por Juzgado.</p>
-            </ion-item>
+        </button>
 
-            <ion-item-options side="right">
-                <button ion-button color="primary" (click)="porJuzgado(1)">
-                    <ion-icon name="stats"></ion-icon>
-                </button>
-                <button ion-button color="secondary" (click)="porJuzgado(2)">
-                    <ion-icon name="pie"></ion-icon>
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-
-        <ion-item-sliding>
-            <ion-item text-wrap>
+        <button ion-item text-wrap (click)="porTipo(1)">
                 <h2>Por Tipo</h2>
                 <p text-justify>Conoce cuantos procesos tienes registrados por Tipo.</p>
-            </ion-item>
+        </button>
 
-            <ion-item-options side="right">
-                <button ion-button color="primary" (click)="porTipo(1)">
-                        <ion-icon name="stats"></ion-icon>
-                </button>
-                <button ion-button color="secondary" (click)="porTipo(2)">
-                        <ion-icon name="pie"></ion-icon>
-                    </button>
-            </ion-item-options>
-        </ion-item-sliding>
-
-        <ion-item-sliding>
-            <ion-item text-wrap>
+        <button ion-item text-wrap (click)="porCiudad(1)">
                 <h2>Por Ciudad</h2>
                 <p text-justify>Conoce cuantos procesos tienes registrados por Ciudad.</p>
-            </ion-item>
+        </button>
 
-            <ion-item-options side="right">
-                <button ion-button color="primary" (click)="porCiudad(1)">
-                            <ion-icon name="stats"></ion-icon>
-                </button>
-                <button ion-button color="secondary" (click)="porCiudad(2)">
-                            <ion-icon name="pie"></ion-icon>
-                        </button>
-            </ion-item-options>
-        </ion-item-sliding>
-
-
-        <ion-item-sliding>
-            <ion-item text-wrap>
+        <button ion-item text-wrap (click)="porEstado(1)">
                 <h2>Por Estado</h2>
                 <p text-justify>Conoce cuantos procesos tienes registrados por Estado.</p>
-            </ion-item>
-
-            <ion-item-options side="right">
-                <button ion-button color="primary" (click)="porEstado(1)">
-                            <ion-icon name="stats"></ion-icon>
-                        </button>
-                <button ion-button color="secondary" (click)="porEstado(2)">
-                            <ion-icon name="pie"></ion-icon>
-                        </button>
-            </ion-item-options>
-        </ion-item-sliding>
-
-
-
+        </button>
     </ion-list>
 
 </ion-content>

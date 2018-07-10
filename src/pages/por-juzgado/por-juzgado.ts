@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ProcesoProvider } from '../../providers/proceso/proceso';
 
@@ -7,12 +7,14 @@ import { ProcesoProvider } from '../../providers/proceso/proceso';
   selector: 'page-por-juzgado',
   templateUrl: 'por-juzgado.html',
 })
-export class PorJuzgadoPage {
+export class PorJuzgadoPage implements OnInit{
 
   user_id:string;
   opcion:number;
+  procesos = [];
   procesosCantidad = [];
   juzgadosNombre = [];
+  total;
 
   /////// DATOS GRAFICA BARRAS /////
   public barChartOptions:any = {};
@@ -35,20 +37,31 @@ export class PorJuzgadoPage {
               this.user_id = this.navParams.get('user_id');
               this.opcion = this.navParams.get('opcion');
 
-              this.procesoService.procesosPorJuzgado(this.user_id).subscribe((resp:any)=>{
-                for(let y=0; y< resp.process.length; y++){
-                  this.procesosCantidad.push(resp.process[y].cantidad);
-                  this.juzgadosNombre.push(resp.process[y].nombre);
-                }
-                
-              });
-
               if(this.opcion === 1){
                 this.cargarGraficaBarras();
               }else{
                 this.cargarGraficasPie();                
               }
   }
+
+  ngOnInit() {
+    let cantidad = 0;
+    let totalProcesos = 0;
+    
+    this.procesoService.procesosPorJuzgado(this.user_id).subscribe((resp:any)=>{
+      this.procesos = resp.process;
+      for(let y=0; y< resp.process.length; y++){
+        this.procesosCantidad.push(resp.process[y].cantidad);
+        this.juzgadosNombre.push(resp.process[y].ABV);
+        cantidad = parseInt(JSON.stringify(resp.process[y].cantidad));
+        totalProcesos += cantidad;
+      }
+      this.total = totalProcesos;
+    });
+    
+    
+  }
+
 
 dismiss() {
   this.viewCtrl.dismiss();
@@ -57,30 +70,22 @@ dismiss() {
 cargarGraficaBarras(){
   this.barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    
   }
 
-  this.barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  this.barChartLabels = this.juzgadosNombre;
   this.barChartType = 'bar';
   this.barChartLegend = true;
   this.barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: this.procesosCantidad, label: 'Procesos'}
   ];
 }
 
 cargarGraficasPie(){
 
-  for(let i=0; i<this.procesosCantidad.length; i++){
-    this.doughnutChartData =this.procesosCantidad[i];
-  }
-
-  for(let i=0; i<this.juzgadosNombre.length; i++){
-    this.doughnutChartLabels = this.juzgadosNombre[i];
-  }
-
-  //this.doughnutChartLabels = this.juzgadosNombre;
-  //this.doughnutChartData = this.procesosCantidad;
+  this.doughnutChartLabels = this.juzgadosNombre;
+  this.doughnutChartData = this.procesosCantidad;
   this.doughnutChartType = 'doughnut';
 }
 
@@ -94,6 +99,7 @@ cambiarGrafica(opcion:number){
     return;
   }
 }
+
 
 }
 

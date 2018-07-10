@@ -70,6 +70,27 @@ export class ProcesoProvider {
     });
   }
 
+  procesosPorTipo(user_id:string){
+    let url = URL_SERVICIOS +'processes/porTipo/'+user_id;
+    return this.http.get(url).map((resp:any)=>{
+      return resp;
+    });
+  }
+
+  procesosPorCiudad(user_id:string){
+    let url = URL_SERVICIOS +'processes/porCiudad/'+user_id;
+    return this.http.get(url).map((resp:any)=>{
+      return resp;
+    });
+  }
+
+  procesosPorEstado(user_id:string){
+    let url = URL_SERVICIOS +'processes/porEstado/'+user_id;
+    return this.http.get(url).map((resp:any)=>{
+      return resp;
+    });
+  }
+  
 }
 
 export interface Proceso{

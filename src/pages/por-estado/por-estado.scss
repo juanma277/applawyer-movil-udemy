@@ -1,3 +1,35 @@
 page-por-estado {
-
+    .boton-bar {
+        color: white;
+        transform: scale(1.5);
+    }
+    .boton-pie {
+        color: white;
+        transform: scale(1.5);
+    }
+    .btn-foto {
+        width: 30%;
+        font-size: 12px;
+        margin-top: 5%;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5%;
+    }
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+    th {
+        background: #0087A2;
+        color: white;
+        font-weight: bold;
+    }
+    td,
+    th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
 }

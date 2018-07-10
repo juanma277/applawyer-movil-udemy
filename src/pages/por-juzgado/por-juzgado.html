@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content padding>
+
     <div *ngIf="opcion === 1">
         <div style="display: block">
             <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
@@ -22,6 +23,31 @@
     <div style="display: block" *ngIf="opcion === 2">
         <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
     </div>
+
+    <table class="resumen">
+        <thead>
+            <tr>
+                <th>Juzgado</th>
+                <th>Cantidad</th>
+                <th>%</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let proceso of procesos">
+                <td>{{proceso.nombre}}</td>
+                <td>{{proceso.cantidad}}</td>
+                <td>{{proceso.cantidad / total | percent}} </td>
+            </tr>
+
+            <tr>
+                <th>Total</th>
+                <td><strong>{{total}}</strong></td>
+                <td><strong>{{1 | percent}}</strong></td>
+            </tr>
+
+        </tbody>
+    </table>
 </ion-content>
 
 
