@@ -1,37 +1,41 @@
 <ion-content padding text-center>
     <ion-grid>
 
-          <ion-row>
+        <ion-row>
             <ion-col class="top-20">
-              <img src="./assets/imgs/logo-applawyer-sin-fondo.png" >
+                <img src="./assets/imgs/logo-applawyer-sin-fondo.png">
             </ion-col>
-          </ion-row>
+        </ion-row>
 
-          <ion-row>
-              <ion-col class="top-5">
-                  <ion-list inset>
+        <ion-row>
+            <ion-col class="top-5">
+                <ion-list inset>
 
-                      <form ngNativeValidate [formGroup]="forma" (ngSubmit)="loginNormal()" >
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="loginNormal()">
 
-                          <ion-item id="rounded" class="fondoInput">
-                            <ion-label color="blanco"><ion-icon ios="ios-mail" md="md-mail" class="iconInput"></ion-icon>Email:</ion-label>
+                        <ion-item id="rounded" class="fondoInput">
+                            <ion-label color="blanco">
+                                <ion-icon ios="ios-mail" md="md-mail" class="iconInput"></ion-icon>Email:</ion-label>
                             <ion-input formControlName="email" name="email" type="email" required></ion-input>
-                          </ion-item>
-                        
-                          <ion-item class="top-5 fondoInput" id="rounded">
-                            <ion-label color="blanco"><ion-icon ios="ios-lock" md="md-lock" class="iconInput"></ion-icon>Contraseña:</ion-label>
-                            <ion-input formControlName="password" name="password" type="password" required></ion-input>
-                          </ion-item>
+                        </ion-item>
 
-                          <button ion-button class="login">
+                        <ion-item class="top-5 fondoInput" id="rounded">
+                            <ion-label color="blanco">
+                                <ion-icon ios="ios-lock" md="md-lock" class="iconInput"></ion-icon>Contraseña:</ion-label>
+                            <ion-input formControlName="password" name="password" type="password" required></ion-input>
+                        </ion-item>
+
+                        <button ion-button class="login">
                               LOGIN
                           </button>
 
-                      </form>
+                    </form>
 
-                  </ion-list>
-              </ion-col>
-          </ion-row>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <!-- INICIAR SESSCIÓN CON GOOGLE O FACEBOOK
 
         <ion-row>
           <ion-col class="top-5">
@@ -46,22 +50,23 @@
 
           </ion-col>
         </ion-row>
+        -->
 
-      </ion-grid>
+    </ion-grid>
 
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="footer">
-    <ion-buttons>
-      <button ion-button icon-end color="royal" (click)="olvidoPass()">
+    <ion-toolbar color="footer">
+        <ion-buttons>
+            <button ion-button icon-end color="royal" (click)="olvidoPass()">
         <p>¿OLVIDASTE TU CONTRASEÑA?</p>
       </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-end color="royal" (click)="registro()">
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-end color="royal" (click)="registro()">
         <p> CREAR CUENTA</p> 
       </button>
-    </ion-buttons>
-  </ion-toolbar>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-footer>

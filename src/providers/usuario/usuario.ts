@@ -29,7 +29,7 @@ export class UsuarioProvider {
     let url = URL_SERVICIOS + 'users/updateImagen/'+user_id;
     return this.http.put(url, {'user_id': user_id, 'archivo':archivo})
                 .map((resp:any)=>{
-                  this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones );
+                  this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones, this.usuario.token );
                   this.guardarStorage();
                   return resp;
                 }); 
@@ -40,12 +40,13 @@ export class UsuarioProvider {
     let url = URL_SERVICIOS + 'users/update/'+user_id;
     return this.http.put(url, {'user_id': user_id, 'nombres':nombres, 'email':email, 'notificaciones':notificaciones })
                 .map((resp:any)=>{
+                  console.log(resp);
                   if(resp.error){
                      swal("Error", "Lo datos que intentas registrar se encuentran duplicados!", "warning");
                      return resp;
                   }else{
                     swal("Correcto", "Usuario Actualizado!", "success");
-                    this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones );
+                    this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones, this.usuario.token );
                     this.guardarStorage();
                     return resp;
                   }
@@ -63,11 +64,12 @@ export class UsuarioProvider {
   loginNormal(email:string, password:string){
     let url = URL_SERVICIOS + 'login/log';
     return this.http.post(url,{'email': email, 'password':password}).map((resp:any)=>{
+      console.log(resp);
       if(resp.error){
         swal("Error", "Datos Incorrectos!", "warning");
         return false;
       }else{
-        this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones);
+        this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones, resp.token.token);
         this.guardarStorage();
         return true;
       }
@@ -77,7 +79,7 @@ export class UsuarioProvider {
     });
   }
 
-  cargarUsuario(nombre:string, email:string, imagen:string, uid:string, provider:string, role:string, estado:string, id:string, procesos:number, notificacciones:number){
+  cargarUsuario(nombre:string, email:string, imagen:string, uid:string, provider:string, role:string, estado:string, id:string, procesos:number, notificacciones:number, token:string){
     this.usuario.nombre  = nombre;
     this.usuario.email  = email;
     this.usuario.imagen  = imagen;
@@ -88,6 +90,7 @@ export class UsuarioProvider {
     this.usuario.id = id;
     this.usuario.procesos = procesos;
     this.usuario.notificaciones = notificacciones;
+    this.usuario.token = token;
   }
 
 
@@ -158,5 +161,6 @@ export interface Usuario{
   terminos?:number,
   remember?:string,
   id?:string,
-  procesos?:number
+  procesos?:number,
+  token?:string
 }
