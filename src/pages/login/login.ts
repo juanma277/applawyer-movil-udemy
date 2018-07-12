@@ -85,6 +85,9 @@ export class LoginPage implements OnInit {
     
   }
 
+  
+  //INICIO DE SESION CON GOOGLE Y FACEBOOK
+  /*
   signInWithGoogle(){
     this.googlePlus.login({
       'webClientId': '120255805446-mg32vjgka2hperfu3677icfr9reulsbl.apps.googleusercontent.com',
@@ -99,6 +102,7 @@ export class LoginPage implements OnInit {
       .catch( error => swal("Firebase failure", JSON.stringify(error), "warning"));
     }).catch(err => swal("Firebase failure", JSON.stringify(err), "warning"));
   }
+
 
   signInWithFacebook() {
     if (this.platform.is('cordova')) {
@@ -125,4 +129,7 @@ export class LoginPage implements OnInit {
       });
     }
   }
+  */
+
+
 }
