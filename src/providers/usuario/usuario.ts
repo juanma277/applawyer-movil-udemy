@@ -26,7 +26,7 @@ export class UsuarioProvider {
 
 
   actualizarFoto(user_id:string, archivo:string){
-    let url = URL_SERVICIOS + 'users/updateImagen/'+user_id;
+    let url = URL_SERVICIOS + 'users/updateImagen/'+user_id+'/movil';
     return this.http.put(url, {'user_id': user_id, 'archivo':archivo})
                 .map((resp:any)=>{
                   this.cargarUsuario(resp.usuario.nombre, resp.usuario.email, resp.usuario.imagen, resp.usuario.uid, resp.usuario.provider, resp.usuario.role, resp.usuario.estado, resp.usuario.id, resp.procesos, resp.usuario.notificaciones, this.usuario.token );
