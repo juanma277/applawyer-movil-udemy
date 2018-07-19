@@ -13,7 +13,7 @@ export class AdjuntoProvider {
 
   crearAdjunto(adjunto: Adjunto){
     
-    let url = URL_SERVICIOS + 'adjuntos/create';
+    let url = URL_SERVICIOS + 'adjuntos/create/movil';
     return this.http.post(url, {'proceso_id': adjunto.proceso_id, 'descripcion': adjunto.descripcion, 'archivo': adjunto.archivo})
                 .map((resp:any)=>{
                   this.adjuntos.push(resp.adjunto);
@@ -47,7 +47,7 @@ export class AdjuntoProvider {
 
   actualizarAdjunto(adjunto: Adjunto){
     this.adjuntos =[];
-    let url = URL_SERVICIOS + 'adjuntos/update/'+adjunto.id;
+    let url = URL_SERVICIOS + 'adjuntos/update/movil/'+adjunto.id;
     return this.http.put(url, {'proceso_id': adjunto.proceso_id, 'descripcion': adjunto.descripcion, 'archivo': adjunto.archivo})
                 .map((resp:any)=>{
                   for(var i=0; i<resp.adjuntos.length ; i++){
