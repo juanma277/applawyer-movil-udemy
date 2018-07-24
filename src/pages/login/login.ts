@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
                 private fb: Facebook,
                 private googlePlus: GooglePlus,
                 public loadingCtrl: LoadingController,
-                public toastCtrl: ToastController
+                public toastCtrl: ToastController,
               ) {}
 
   ngOnInit(){

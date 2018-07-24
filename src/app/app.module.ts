@@ -28,12 +28,10 @@ import { PorEstadoPage } from '../pages/por-estado/por-estado';
 import { PorJuzgadoPage } from '../pages/por-juzgado/por-juzgado';
 import { PorTipoPage } from '../pages/por-tipo/por-tipo';
 
-
 //PIPES
 import { SplitPipe } from '../pipes/split/split';
 import { ImagenPipe } from '../pipes/imagen/imagen';
 import { ImagenUserPipe } from '../pipes/imagen-user/imagen-user';
-
 
 //PROVIDER
 import { UsuarioProvider } from '../providers/usuario/usuario';
@@ -44,6 +42,7 @@ import { JuzgadoProvider } from '../providers/juzgado/juzgado';
 import { AlertaProvider } from '../providers/alerta/alerta';
 import { AdjuntoProvider } from '../providers/adjunto/adjunto';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { PushnotificationProvider } from '../providers/pushnotification/pushnotification';
 
 //PLUGINS
 import { Facebook} from '@ionic-native/facebook';
@@ -52,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { ChartsModule } from 'ng2-charts';
-
+import { OneSignal } from '@ionic-native/onesignal';
 
 //FORMULARIOS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -135,7 +134,6 @@ import { firebaseConfig } from '../config/firebase.config';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
     Facebook,
     GooglePlus,
@@ -146,7 +144,10 @@ import { firebaseConfig } from '../config/firebase.config';
     AlertaProvider,
     Camera,
     ImagePicker,
-    AdjuntoProvider
+    AdjuntoProvider,
+    OneSignal,
+    PushnotificationProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

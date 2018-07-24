@@ -14,8 +14,6 @@ import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
 import { AboutPage } from '../pages/about/about';
 import { ProcesoProvider } from '../providers/proceso/proceso';
 
-declare var swal: any;
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -38,7 +36,7 @@ export class MyApp {
                 private ajustesProvider: AjustesProvider,
                 public usuarioService: UsuarioProvider,
                 public alertCtrl: AlertController,
-                public procesoService:ProcesoProvider
+                public procesoService:ProcesoProvider,
             ) {
     platform.ready().then(() => {
         this.ajustesProvider.cargarStorage().then(()=>{
@@ -53,15 +51,20 @@ export class MyApp {
 
         this.usuarioService.cargarStorage().then(()=>{
           if(this.usuarioService.usuario.nombre){
-              this.rootPage = HomePage;            
+              this.rootPage = HomePage;
+              return;
+
           }else{
             this.rootPage = LoginPage;
+            return;
           }
+              
+        });
+
               // Okay, so the platform is ready and our plugins are available.
               // Here you can do any higher level native things you might need.
               statusBar.styleDefault();
               splashScreen.hide();
-        });
     });
   }
 
